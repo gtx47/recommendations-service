@@ -21,7 +21,6 @@ export class MongoRecommendationRepository implements RecommendationRepositoryPo
     expiresAt.setDate(expiresAt.getDate() + 30);
 
     const doc = await this.model.create({
-      _id: uuidv4(),
       ...input,
       expiresAt,
     });

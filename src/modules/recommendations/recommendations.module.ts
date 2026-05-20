@@ -19,6 +19,7 @@ import { RecommendationsController } from './interfaces/http/recommendations.con
 import { AdminController } from './interfaces/http/admin.controller';
 import { HealthController } from './interfaces/http/health.controller';
 import { JwtAuthGuard } from './interfaces/http/guards/jwt-auth.guard';
+import { RabbitMQConsumerService } from './infrastructure/messaging/rabbitmq-consumer.service';
 
 import {
   RECOMMENDATION_REPOSITORY,
@@ -46,6 +47,7 @@ import {
     CleanupExpiredUseCase,
 
     JwtAuthGuard,
+    RabbitMQConsumerService,
 
     { provide: RECOMMENDATION_REPOSITORY, useClass: MongoRecommendationRepository },
     { provide: TOKEN_SERVICE, useClass: JwtTokenService },

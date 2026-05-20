@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, UseGuards, Request, Query } from '@nestjs/
 import { GetRecommendationsUseCase } from '../../application/use-cases/get-recommendations/get-recommendations.use-case';
 import { CreateRecommendationUseCase } from '../../application/use-cases/create-recommendation/create-recommendation.use-case';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { CreateRecommendationDto } from './dtos/create-recommendation.dto';
 
 @Controller('recommendations')
 export class RecommendationsController {
@@ -34,7 +35,7 @@ export class RecommendationsController {
   @UseGuards(JwtAuthGuard)
   async createRecommendation(
     @Request() req: any,
-    @Body() body: any,
+    @Body() body: CreateRecommendationDto,
   ) {
     const recommendation = await this.createRecommendationUseCase.execute({
       userId: req.user.userId,
